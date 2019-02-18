@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DecoupledFocus</string>
+    <string name="string_focus">tag_focus_scale</string>
+    <string name="string_scale">tag_scale</string>
+    <string name="string_no_scale">tag_no_scale</string>
+    <string name="string_ignore">tag_ignore</string>
 </resources>

@@ -75,6 +75,10 @@ public class FocusView extends View implements Animator.AnimatorListener {
             //如果是滑动模式触发的，该View不支持滑动跟随移动则不触发
             return;
         }
+        //如果正在动画，则取消动画
+        if (isAnimating() && animator != null){
+            animator.cancel();
+        }
         //设置贴图资源
         setBackgroundResource(param.drawableResource);
         //获取自身view屏幕位置

@@ -1,18 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.superzhang.myapplication.focus.bring.BringToFrontLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal">
 
     <TextView
+        style="@style/FocusStyle"
+        android:tag="@string/string_focus"
+        android:layout_marginTop="10dp"
+        android:padding="20dp"
+        android:id="@+id/tv_scale_show"
+        android:gravity="center"
+        android:text="放大、显示飞框"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints" />
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        style="@style/FocusStyle"
+        android:tag="@string/string_scale"
+        android:padding="20dp"
+        android:id="@+id/tv_scale_hide"
+        android:gravity="center"
+        android:text="放大、无飞框"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        style="@style/FocusStyle"
+        android:tag="@string/string_no_scale"
+        android:padding="20dp"
+        android:id="@+id/tv_no_scale_show"
+        android:gravity="center"
+        android:text="不放大、显示飞框"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        style="@style/FocusStyle"
+        android:tag="@string/string_ignore"
+        android:padding="20dp"
+        android:id="@+id/tv_ignore"
+        android:gravity="center"
+        android:text="不放大、无飞框"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        style="@style/FocusStyle"
+        android:padding="20dp"
+        android:id="@+id/tv_delay"
+        android:gravity="center"
+        android:text="动画时间延长"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints" />
+
+</com.superzhang.myapplication.focus.bring.BringToFrontLinearLayout>
