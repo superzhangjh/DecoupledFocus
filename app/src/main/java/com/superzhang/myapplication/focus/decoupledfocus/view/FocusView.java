@@ -75,20 +75,15 @@ public class FocusView extends View implements Animator.AnimatorListener {
             //如果是滑动模式触发的，该View不支持滑动跟随移动则不触发
             return;
         }
-
         //设置贴图资源
         setBackgroundResource(param.drawableResource);
-
         //获取自身view屏幕位置
         int[] fromLocation = new int[2];
         getLocationOnScreen(fromLocation);
-
         //动画集合
         Animator[] animators;
-
         //如果是忽略的View，则不进行缩放
         float zoom = focusTag.isScale()? param.zoom: 1.0f;
-
         //目标宽高
         int animWidth = view.getWidth() + param.leftPadding + param.rightPadding;
         int animHeight = view.getHeight() + param.topPadding + param.bottomPadding;
@@ -96,32 +91,26 @@ public class FocusView extends View implements Animator.AnimatorListener {
             animators = new Animator[2];
         } else {
             animators = new Animator[7];
-
             //宽高动画
             final ObjectAnimator widthAnimator = ObjectAnimator.ofInt(this,
                     "scaleWidth", width == 0? getMeasuredWidth(): width, animWidth);
             final ObjectAnimator heightAnimator = ObjectAnimator.ofInt(this,
                     "scaleHeight", height == 0? getMeasuredHeight(): height, animHeight);
-
             //渐变动画
             final ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(this,
                     "alpha", getAlpha()
                     , param.visiable? (focusTag.isShow()? 1.0f: 0) : 0);
-
             //缩放动画
             final ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(this,
                     "scaleX", getScaleX(), zoom);
             final ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(this,
                     "scaleY", getScaleY(), zoom);
-
             animators[2] = widthAnimator;
             animators[3] = heightAnimator;
             animators[4] = alphaAnimator;
             animators[5] = scaleXAnimator;
             animators[6] = scaleYAnimator;
         }
-
-
         //位置移动动画
         int xOffset = (param.rightPadding - param.leftPadding)/2;
         int yOffset = (param.bottomPadding - param.topPadding)/2;
@@ -131,23 +120,17 @@ public class FocusView extends View implements Animator.AnimatorListener {
                 this, "translationX", fromLocation[0], animX);
         final ObjectAnimator translateYAnimator = ObjectAnimator.ofFloat(
                 this, "translationY", fromLocation[1], animY);
-
         animators[0] = translateXAnimator;
         animators[1] = translateYAnimator;
-
         //进行播放
         final AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(animators);
-
         //设置加速器
         animatorSet.setInterpolator(outSlowInInterpolator);
-
         //设置时长
         animatorSet.setDuration(param.duration);
-
         //设置动画监听
         animatorSet.addListener(this);
-
         //执行动画
         animatorSet.start();
     }
